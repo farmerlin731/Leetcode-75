@@ -9,11 +9,16 @@
 var decodeString = function (s) {
   const stack = [];
   let tmpStr = "";
+  let tmpCount = 0;
 
   for (const char of s) {
-    if (char != "]") {
+    if (!Number.isNaN(+char)) {
+      tmpCount += char;
+    } else if (char == "[") {
+      stack.push(tmpCount);
       stack.push(char);
-    } else {
+      tmpCount = 0;
+    } else if (char == "]") {
       tmpStr = "";
       let lastChar = stack.pop();
       while (lastChar != "[") {
@@ -22,40 +27,17 @@ var decodeString = function (s) {
       }
 
       let count = stack.pop();
-      for (let i = 0; i < count; i++) {
-        stack.push(tmpStr);
-      }
+      stack.push(tmpStr.repeat(count));
+    } else {
+      stack.push(char);
     }
   }
+  //   console.log("stack", stack);
   return stack.join("");
 };
 
 // let s = "3[a]2[bc]";
 // let s = "3[a2[c]]";
 let s = "2[abc]3[cd]ef";
-
-const stack = [];
-let tmpStr = "";
-
-for (const char of s) {
-  if (char != "]") {
-    stack.push(char);
-  } else {
-    tmpStr = "";
-    let lastChar = stack.pop();
-    while (lastChar != "[") {
-      tmpStr = lastChar + tmpStr;
-      lastChar = stack.pop();
-    }
-    // console.log("tmpStr", tmpStr);
-
-    let count = stack.pop();
-    for (let i = 0; i < count; i++) {
-      stack.push(tmpStr);
-      //   console.log(tmpStr);
-    }
-    // console.log(stack);
-  }
-}
 
 console.log(decodeString(s));
