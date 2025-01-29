@@ -2,19 +2,29 @@
 //Set a num(pivot), which means the normal order.
 //And set a queue, the contents are all smaller than pivot.
 //Oh,, the data structure of queue can be a minHeap.
+//Oh,, u should consider the circumstance about duplicate number!
 
 const { MinPriorityQueue } = require("@datastructures-js/priority-queue");
 
 var SmallestInfiniteSet = function () {
   this.pivot = 1;
   this.minHeap = new MinPriorityQueue((x) => x);
+  //V2
+  this.numSet = new Set();
 };
 
 /**
  * @return {number}
  */
 SmallestInfiniteSet.prototype.popSmallest = function () {
-  return this.minHeap.size() == 0 ? this.pivot++ : this.minHeap.dequeue();
+  let ans;
+  if (this.minHeap.size() == 0) {
+    ans = this.pivot++;
+  } else {
+    ans = this.minHeap.dequeue();
+    this.numSet.delete(ans);
+  }
+  return ans;
 };
 
 /**
@@ -22,7 +32,10 @@ SmallestInfiniteSet.prototype.popSmallest = function () {
  * @return {void}
  */
 SmallestInfiniteSet.prototype.addBack = function (num) {
-  if (num < this.pivot) this.minHeap.enqueue(num);
+  if (num < this.pivot && !this.numSet.has(num)) {
+    this.minHeap.enqueue(num);
+    this.numSet.add(num);
+  }
 };
 
 /**
