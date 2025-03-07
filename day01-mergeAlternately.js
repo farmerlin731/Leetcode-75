@@ -28,7 +28,20 @@ const mergeAlternatelyFromLeetcode = (a, b) => {
   return result;
 };
 
-let word1 = "abcd",
-  word2 = "pq";
+const merge0307 = (word1, word2) => {
+  let i = 0;
+  let result = "";
 
-console.log(mergeAlternately(word1, word2));
+  while (word1[i] && word2[i]) {
+    result += word1[i] + word2[i];
+    i++;
+  }
+  result += word1.slice(i) + word2.slice(i);
+  return result;
+};
+
+let word1 = "ab",
+  word2 = "pqrs";
+console.log(merge0307(word1, word2));
+
+// console.log(mergeAlternately(word1, word2));
