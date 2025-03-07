@@ -1,18 +1,18 @@
-![Image](https://github.com/user-attachments/assets/c5d8544f-46b5-4f36-a79a-48e1e0500d5c)
+![Image](https://github.com/user-attachments/assets/97449e56-1275-40d6-b8d2-3f892e53a5a3)
 
-**:question: 題目來源**：[ExplainThis](https://www.explainthis.io/zh-hant/swe/fe-whiteboard)
+**:question: 題目來源**：[Leetcode-75](https://leetcode.com/studyplan/leetcode-75/)
 
 **:100: 解答程式碼**：[GitHub Repository](https://github.com/farmerlin731/Leetcode-75)
 
-**🔥 E+ 成長計畫**：[點我查看](https://www.explainthis.io/zh-hant/e-plus)
+**🔥 解題思路**：[點我查看](https://crimson-wasabi-629.notion.site/Leetcode-75-1af2fcabe9c78009ae18ef3337318e6b?pvs=4)
 
 ---
 
-💡 **『 ExplainThis 』** 彙整了常見的前端手寫，並按照類別與難易程度做區分。其不只佛心提供了大量的免費資源，這兩年也推出了 E+成長計畫，有興趣的可參考上方連結，一起努力～！
-<br/><br/>
-📌 以下筆記為自己在寫這 50 題中的思路邏輯與程式碼，分享的同時也讓自己複習整理思路：  
-🔹 [Part 1 (Q01 - Q28)](https://crimson-wasabi-629.notion.site/50-Part-1-1942fcabe9c78001954ad1716bdd796a) 🔹 [Part 2 (Q29 - Q50)](https://crimson-wasabi-629.notion.site/50-1942fcabe9c78003b162d8ed87521124?pvs=4)
+💡 **『 Leetcode-75 』** 是一份整理過的演算法題庫，涵蓋常見的題目，並根據類別與難易度分類。
+題型包括 Two Pointers、Tree、DP...等，基本的演算法概念都囊括其中。
+這個 Repo 記錄了我在解題過程中的思路，當然，也有遇到卡關只能參考解答的時候（笑）。
+持續學習，期許自己越來越強！ 🚀
 
 ---
 
-🛠 **Finished @ 20240611, keep going. :)**
+🛠 **Still improving... Keep going! (2025/03/07)**
