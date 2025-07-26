@@ -41,3 +41,25 @@ var canPlaceFlowersSoluA = function (flowerbed, n) {
   }
   return false;
 };
+
+var canPlaceFlowers0726 = function (flowerbed, n) {
+  if (n == 0) return true;
+  let index = 0;
+
+  while (index < flowerbed.length && n > 0) {
+    if (flowerbed[index] || flowerbed[index + 1] || flowerbed[index - 1]) {
+      index++;
+      continue;
+    }
+
+    n--;
+    index += 2;
+  }
+
+  return n == 0 ? true : false;
+};
+
+let flowerbed = [1, 0, 0, 0, 1],
+  n = 2;
+
+console.log(canPlaceFlowers0726(flowerbed, n));
