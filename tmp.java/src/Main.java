@@ -1,27 +1,38 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
 
-    public static String gcdOfStrings(String str1, String str2) {
+    public static int longestOnes(int[] nums, int k) {
+        int slow = 0, fast = 0;
+        int zeroCount = 0;
+        int maxLen = 0;
 
-        if (!str1.concat(str2).equals(str2.concat(str1))) {
-            return "";
+        while (fast < nums.length) {
+            if (nums[fast] == 0) {
+                zeroCount++;
+            }
+            while (zeroCount > k) {
+                if (nums[slow++] == 0) {
+                    zeroCount--;
+                }
+            }
+            maxLen = Math.max(maxLen, fast - slow + 1);
+            fast++;
         }
-        int lengthGCD = gcd(str1.length(), str2.length());
-        return str1.substring(0, lengthGCD);
+        
+        return maxLen;
     }
 
-    public static int gcd(int a, int b) {
-        return (b == 0) ? a : gcd(b, a % b);
-    }
-
+    // 測試
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        String word1 = "ABABAB";
-        String word2 = "A";
-        String result = gcdOfStrings(word1, word2);
-        System.out.println(result);  // 輸出：apbqcrstu
+        int[] nums1 = {1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0};
+        int k1 = 2;
+        System.out.println("測資1 => " + longestOnes(nums1, k1)); // 預期輸出 6
 
+        int[] nums2 = {0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1};
+        int k2 = 3;
+        System.out.println("測資2 => " + longestOnes(nums2, k2)); // 預期輸出 10
+
+        int[] nums3 = {1, 1, 1, 1, 1};
+        int k3 = 1;
+        System.out.println("測資3 => " + longestOnes(nums3, k3)); // 預期輸出 5
     }
 }
