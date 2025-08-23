@@ -1,29 +1,29 @@
 public class Main {
 
-    public static int longestOnes(int[] nums, int k) {
+    public static int longestOnes(int[] nums) {
         int slow = 0, fast = 0;
-        int zeroCount = 0;
-        int maxLen = 0;
+        int k = 1;
 
         while (fast < nums.length) {
             if (nums[fast] == 0) {
-                zeroCount++;
+                k--;
             }
-            while (zeroCount > k) {
-                if (nums[slow++] == 0) {
-                    zeroCount--;
+            if (k < 0) {
+                if (nums[slow] == 0) {
+                    k++;
                 }
+                slow++;
             }
-            maxLen = Math.max(maxLen, fast - slow + 1);
             fast++;
         }
-        
-        return maxLen;
+
+
+        return fast - slow - 1;
     }
 
     // 測試
     public static void main(String[] args) {
-        int[] nums1 = {1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0};
+        int[] nums1 = {1, 1, 0, 1};
         int k1 = 2;
         System.out.println("測資1 => " + longestOnes(nums1, k1)); // 預期輸出 6
 
