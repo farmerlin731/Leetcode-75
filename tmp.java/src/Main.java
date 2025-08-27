@@ -1,24 +1,15 @@
 public class Main {
 
-    public static int longestOnes(int[] nums) {
-        int slow = 0, fast = 0;
-        int k = 1;
+    public static int largestAltitude(int[] gain) {
+        int tmp = 0;
+        int max = 0;
 
-        while (fast < nums.length) {
-            if (nums[fast] == 0) {
-                k--;
-            }
-            if (k < 0) {
-                if (nums[slow] == 0) {
-                    k++;
-                }
-                slow++;
-            }
-            fast++;
+        for (int x : gain) {
+            tmp += x;
+            max = Math.max(max, tmp);
         }
 
-
-        return fast - slow - 1;
+        return max;
     }
 
     // 測試
