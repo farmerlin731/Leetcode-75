@@ -1,5 +1,5 @@
 public static String removeStars(String s) {
-    
+    // for new commit @ 0928
     Deque<Character> stack = new ArrayDeque<>();
     for (char c : s.toCharArray()) {
         if (c == '*') {
