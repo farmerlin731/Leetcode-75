@@ -1,4 +1,5 @@
 public static int[] asteroidCollision(int[] asteroids) {
+    // for new commit @ 1001
     Deque<Integer> stack = new ArrayDeque<>();
 
     for (int as : asteroids) {
