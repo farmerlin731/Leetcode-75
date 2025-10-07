@@ -1,6 +1,3 @@
-import java.util.ArrayDeque;
-import java.util.Deque;
-
 class RecentCounter {
     private Deque<Integer> queue;
 
@@ -14,9 +11,3 @@ class RecentCounter {
         return queue.size();
     }
 }
-
-/**
- * Your RecentCounter object will be instantiated and called as such:
- * RecentCounter obj = new RecentCounter();
- * int param_1 = obj.ping(t);
- */
