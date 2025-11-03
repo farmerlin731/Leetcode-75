@@ -1,61 +1,75 @@
-class ListNode {
-    int val;
-    ListNode next;
+import java.util.ArrayList;
+import java.util.List;
 
-    ListNode(int val) {
+class TreeNode {
+    int val;
+    TreeNode left, right;
+
+    TreeNode(int val) {
         this.val = val;
     }
 }
 
 public class Main {
-    public static ListNode deleteMiddle(ListNode head) {
-        // if there is only one node, the list will be empty.
-        if (head == null || head.next == null) return null;
 
-        ListNode pre = null;
-        ListNode slow = head;
-        ListNode fast = head;
+    public static boolean leafSimilar(TreeNode root1, TreeNode root2) {
+        List<Integer> leaves1 = new ArrayList<>();
+        List<Integer> leaves2 = new ArrayList<>();
+        dfs(root1, leaves1);
+        dfs(root2, leaves2);
 
-        while (fast != null && fast.next != null) {
-            pre = slow;
-            slow = slow.next;
-            fast = fast.next.next;
-        }
-
-        // 'slow' is the deleted point
-        pre.next = slow.next;
-
-        return head;
+        return leaves1.equals(leaves2);
     }
 
-    // 輔助方法：印出鏈結串列
-    public static void printList(ListNode head) {
-        ListNode curr = head;
-        while (curr != null) {
-            System.out.print(curr.val);
-            if (curr.next != null) System.out.print(" -> ");
-            curr = curr.next;
-        }
-        System.out.println();
+    // helper
+    private static void dfs(TreeNode node, List<Integer> leaves) {
+        if (node == null) return;
+        if (node.left == null && node.right == null) leaves.add(node.val);
+
+        dfs(node.left, leaves);
+        dfs(node.right, leaves);
     }
 
-    // 測試用 main
+    // 測試主程式
     public static void main(String[] args) {
-        // 建立測試資料：1 -> 3 -> 4 -> 7 -> 1 -> 2 -> 6
-        ListNode head = new ListNode(1);
-        head.next = new ListNode(3);
-        head.next.next = new ListNode(4);
-        head.next.next.next = new ListNode(7);
-        head.next.next.next.next = new ListNode(1);
-        head.next.next.next.next.next = new ListNode(2);
-        head.next.next.next.next.next.next = new ListNode(6);
+        // 建立 Tree 1
+        TreeNode root1 = new TreeNode(3);
+        root1.left = new TreeNode(5);
+        root1.right = new TreeNode(1);
+        root1.left.left = new TreeNode(6);
+        root1.left.right = new TreeNode(2);
+        root1.left.right.left = new TreeNode(7);
+        root1.left.right.right = new TreeNode(4);
+        root1.right.left = new TreeNode(9);
+        root1.right.right = new TreeNode(8);
 
-        System.out.println("原始串列：");
-        printList(head);
+        // 建立 Tree 2
+        TreeNode root2 = new TreeNode(3);
+        root2.left = new TreeNode(5);
+        root2.right = new TreeNode(1);
+        root2.left.left = new TreeNode(6);
+        root2.right.left = new TreeNode(7);
+        root2.right.right = new TreeNode(4);
+        root2.right.left.left = new TreeNode(9);
+        root2.right.left.right = new TreeNode(8);
 
-        head = deleteMiddle(head);
+        System.out.println("Output: " + leafSimilar(root1, root2)); // true
 
-        System.out.println("刪除中間節點後：");
-        printList(head);
+        // 測資 2: 不同葉子
+        TreeNode a = new TreeNode(1);
+        a.left = new TreeNode(2);
+        a.right = new TreeNode(3);
+
+        TreeNode b = new TreeNode(1);
+        b.left = new TreeNode(3);
+        b.right = new TreeNode(2);
+
+        System.out.println("Output: " + leafSimilar(a, b));
+        ArrayList<Integer> tmp = new ArrayList<>();
+        tmp.add(5);
+        tmp.add(7);
+        tmp.add(-3);
+        System.out.println(tmp);
+        // false
     }
 }
